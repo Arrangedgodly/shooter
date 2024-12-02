@@ -18,6 +18,7 @@ var use_controller_aim: bool = false
 
 func _ready() -> void:
 	setup_crosshairs()
+	weapon_controller.weapon_type_changed.connect(update_weapon_type)
 	weapon_controller.equip_weapon("knife")
 
 func _input(event: InputEvent) -> void:
@@ -96,3 +97,6 @@ func update_crosshair_visibility() -> void:
 func switch_weapon(new_weapon: String) -> void:
 	weapon_controller.equip_weapon(new_weapon)
 	update_crosshair_visibility()
+
+func update_weapon_type(new_type: WeaponType) -> void:
+	active_weapon_type = new_type

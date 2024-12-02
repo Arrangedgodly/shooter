@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://d2uww328p7juk" path="res://assets/Updated_ZombiePack_AssetPack/AnimationSheets/Player_Character_32x32/Player_knocked.png" id="4_cdjkb"]
 [ext_resource type="Texture2D" uid="uid://bseo8itkfyv00" path="res://assets/Updated_ZombiePack_AssetPack/AnimationSheets/Player_Character_32x32/Player_run.png" id="5_tuifc"]
 [ext_resource type="Script" path="res://scripts/PolygonSprite.gd" id="6_dtfb3"]
-[ext_resource type="Script" path="res://scripts/weapon_controller.gd" id="8_fpu7r"]
+[ext_resource type="Script" path="res://scripts/WeaponController.gd" id="8_fpu7r"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2s1dx"]
 atlas = ExtResource("1_8sprc")
