@@ -1,78 +1,13 @@
-[gd_scene load_steps=12 format=3 uid="uid://bhk4283i5vjff"]
+[gd_scene load_steps=4 format=3 uid="uid://bhk4283i5vjff"]
 
-[ext_resource type="Texture2D" uid="uid://5msnbt80hais" path="res://assets/Updated_ZombiePack_AssetPack/SpriteSheets/Weapons sprites (32x32).png" id="1_72pep"]
-[ext_resource type="Texture2D" uid="uid://bsc6ff1lwnkkx" path="res://assets/Updated_ZombiePack_AssetPack/AnimationSheets/Weaonns_Sprites_32x32/Knife.png" id="1_ntdem"]
+[ext_resource type="SpriteFrames" uid="uid://dpw67in2krkm0" path="res://scenes/weapons/knife.tres" id="1_pjinu"]
+[ext_resource type="Script" path="res://scripts/Weapon.gd" id="1_up7fi"]
+[ext_resource type="Script" path="res://scripts/PolygonSprite.gd" id="2_mi5ct"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_plckg"]
-atlas = ExtResource("1_ntdem")
-region = Rect2(0, 0, 32, 32)
+[node name="Knife" type="RigidBody2D"]
+script = ExtResource("1_up7fi")
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_bgxa2"]
-atlas = ExtResource("1_ntdem")
-region = Rect2(32, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_du2m7"]
-atlas = ExtResource("1_ntdem")
-region = Rect2(64, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_rmr3q"]
-atlas = ExtResource("1_ntdem")
-region = Rect2(96, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_fnvo7"]
-atlas = ExtResource("1_ntdem")
-region = Rect2(128, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_bl87m"]
-atlas = ExtResource("1_ntdem")
-region = Rect2(160, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_4hlfy"]
-atlas = ExtResource("1_ntdem")
-region = Rect2(192, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_bkft6"]
-atlas = ExtResource("1_72pep")
-region = Rect2(96, 32, 32, 32)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_uiw01"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_plckg")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_bgxa2")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_du2m7")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_rmr3q")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_fnvo7")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_bl87m")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_4hlfy")
-}],
-"loop": true,
-"name": &"flicker",
-"speed": 10.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_bkft6")
-}],
-"loop": true,
-"name": &"idle",
-"speed": 5.0
-}]
-
-[node name="Knife" type="AnimatedSprite2D"]
-sprite_frames = SubResource("SpriteFrames_uiw01")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = ExtResource("1_pjinu")
 animation = &"flicker"
-frame_progress = 0.802717
+script = ExtResource("2_mi5ct")

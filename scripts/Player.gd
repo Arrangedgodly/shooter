@@ -8,6 +8,7 @@ extends CharacterBody2D
 @onready var aim_direction: Vector2 = Vector2.RIGHT
 @onready var square_crosshair_scene = preload("res://scenes/square_crosshair.tscn")
 @onready var circle_crosshair_scene = preload("res://scenes/circle_crosshair.tscn")
+@onready var weapon_controller: WeaponController = $WeaponController
 
 var square_crosshair: Crosshair
 var circle_crosshair: Crosshair
@@ -16,19 +17,8 @@ var active_weapon_type: WeaponType = WeaponType.MELEE
 var use_controller_aim: bool = false
 
 func _ready() -> void:
-	if use_controller_aim:
-		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
-	
-	# Instance the crosshairs
-	square_crosshair = square_crosshair_scene.instantiate()
-	circle_crosshair = circle_crosshair_scene.instantiate()
-	
-	# Add them as children
-	add_child(square_crosshair)
-	add_child(circle_crosshair)
-	
-	# Set initial crosshair state
-	update_crosshair_visibility()
+	setup_crosshairs()
+	weapon_controller.equip_weapon("knife")
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("click"):
@@ -63,7 +53,7 @@ func _physics_process(delta: float) -> void:
 	else:
 		_handle_mouse_aim()
 	
-	# Update active crosshair position
+	weapon_controller.set_aim_direction(aim_direction)
 	_update_crosshair()
 
 func _handle_mouse_aim() -> void:
@@ -78,6 +68,17 @@ func _handle_controller_aim(delta: float) -> void:
 	if aim_input.length() > 0.1:
 		aim_direction = aim_input.normalized()
 
+func setup_crosshairs() -> void:
+	if use_controller_aim:
+		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+
+	square_crosshair = square_crosshair_scene.instantiate()
+	circle_crosshair = circle_crosshair_scene.instantiate()
+	add_child(square_crosshair)
+	add_child(circle_crosshair)
+
+	update_crosshair_visibility()
+	
 func _update_crosshair() -> void:
 	var crosshair_distance: float = 50.0
 	var target_position = global_position + (aim_direction * crosshair_distance)
@@ -92,6 +93,6 @@ func update_crosshair_visibility() -> void:
 		square_crosshair.visible = (active_weapon_type == WeaponType.MELEE)
 		circle_crosshair.visible = (active_weapon_type == WeaponType.RANGED)
 
-func switch_weapon(weapon_type: WeaponType) -> void:
-	active_weapon_type = weapon_type
+func switch_weapon(new_weapon: String) -> void:
+	weapon_controller.equip_weapon(new_weapon)
 	update_crosshair_visibility()
