@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://xhqryddmnm51"]
+
+[ext_resource type="Texture2D" uid="uid://5msnbt80hais" path="res://assets/Updated_ZombiePack_AssetPack/SpriteSheets/Weapons sprites (32x32).png" id="1_hlbb4"]
+[ext_resource type="Script" path="res://scripts/Crosshair.gd" id="2_5wxw3"]
+
+[node name="CircleCrosshair" type="Sprite2D"]
+texture = ExtResource("1_hlbb4")
+hframes = 6
+vframes = 2
+frame = 4
+script = ExtResource("2_5wxw3")
+base_frame = 4
+animation_frame = 10
