@@ -1,0 +1,111 @@
+[gd_scene load_steps=17 format=3 uid="uid://dh35i3unb7fku"]
+
+[ext_resource type="Texture2D" uid="uid://b035urhhr3rbv" path="res://assets/Updated_ZombiePack_AssetPack/AnimationSheets/Weaonns_Sprites_32x32/Rifle_Flicker.png" id="1_reev4"]
+[ext_resource type="Texture2D" uid="uid://5msnbt80hais" path="res://assets/Updated_ZombiePack_AssetPack/SpriteSheets/Weapons sprites (32x32).png" id="2_4hnlm"]
+[ext_resource type="Texture2D" uid="uid://btefxkk56ksbg" path="res://assets/Updated_ZombiePack_AssetPack/AnimationSheets/Weaonns_Sprites_32x32/Rifle_Shoot.png" id="3_jxsyv"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7pp1c"]
+atlas = ExtResource("1_reev4")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_du5c4"]
+atlas = ExtResource("1_reev4")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jw7bp"]
+atlas = ExtResource("1_reev4")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ucn8g"]
+atlas = ExtResource("1_reev4")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y8snn"]
+atlas = ExtResource("1_reev4")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nofn4"]
+atlas = ExtResource("1_reev4")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8f2ev"]
+atlas = ExtResource("1_reev4")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d4uhd"]
+atlas = ExtResource("2_4hnlm")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nctfa"]
+atlas = ExtResource("3_jxsyv")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_csgey"]
+atlas = ExtResource("3_jxsyv")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_020da"]
+atlas = ExtResource("3_jxsyv")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_818ah"]
+atlas = ExtResource("3_jxsyv")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_l8rd5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7pp1c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_du5c4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jw7bp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ucn8g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y8snn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nofn4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8f2ev")
+}],
+"loop": true,
+"name": &"flicker",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d4uhd")
+}],
+"loop": false,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nctfa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_csgey")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_020da")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_818ah")
+}],
+"loop": false,
+"name": &"shoot",
+"speed": 10.0
+}]
+
+[node name="Rifle" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_l8rd5")
+animation = &"flicker"

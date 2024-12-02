@@ -1,0 +1,77 @@
+[gd_scene load_steps=12 format=3 uid="uid://c2hhcnnog26mv"]
+
+[ext_resource type="Texture2D" uid="uid://bqs308bwp1ayw" path="res://assets/Updated_ZombiePack_AssetPack/AnimationSheets/Weaonns_Sprites_32x32/Axe_Flicker.png" id="1_r4hvo"]
+[ext_resource type="Texture2D" uid="uid://5msnbt80hais" path="res://assets/Updated_ZombiePack_AssetPack/SpriteSheets/Weapons sprites (32x32).png" id="1_rky5m"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i1mni"]
+atlas = ExtResource("1_r4hvo")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0rwwx"]
+atlas = ExtResource("1_r4hvo")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nvqsn"]
+atlas = ExtResource("1_r4hvo")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qjqnv"]
+atlas = ExtResource("1_r4hvo")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eo6dr"]
+atlas = ExtResource("1_r4hvo")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e53kh"]
+atlas = ExtResource("1_r4hvo")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mwu0a"]
+atlas = ExtResource("1_r4hvo")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q757w"]
+atlas = ExtResource("1_rky5m")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bmv0b"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i1mni")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0rwwx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nvqsn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qjqnv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eo6dr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e53kh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mwu0a")
+}],
+"loop": true,
+"name": &"flicker",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q757w")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[node name="Axe" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_bmv0b")
+animation = &"flicker"

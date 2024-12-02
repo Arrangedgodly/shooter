@@ -1,0 +1,174 @@
+[gd_scene load_steps=26 format=3 uid="uid://gthqdd6onnoc"]
+
+[ext_resource type="Texture2D" uid="uid://43nnhpxwk5jb" path="res://assets/Updated_ZombiePack_AssetPack/AnimationSheets/Weaonns_Sprites_32x32/Sniper_Flicker.png" id="1_0ofpf"]
+[ext_resource type="Texture2D" uid="uid://5msnbt80hais" path="res://assets/Updated_ZombiePack_AssetPack/SpriteSheets/Weapons sprites (32x32).png" id="1_qlbcq"]
+[ext_resource type="Texture2D" uid="uid://cllwc7o4wkedc" path="res://assets/Updated_ZombiePack_AssetPack/AnimationSheets/Weaonns_Sprites_32x32/Sniper_Shoot.png" id="3_hjjdp"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wrq3b"]
+atlas = ExtResource("1_0ofpf")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5wmaw"]
+atlas = ExtResource("1_0ofpf")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rwjc3"]
+atlas = ExtResource("1_0ofpf")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gijte"]
+atlas = ExtResource("1_0ofpf")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p4h77"]
+atlas = ExtResource("1_0ofpf")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g1f2w"]
+atlas = ExtResource("1_0ofpf")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bp2lt"]
+atlas = ExtResource("1_0ofpf")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kdd4a"]
+atlas = ExtResource("1_qlbcq")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q18xj"]
+atlas = ExtResource("3_hjjdp")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yxkut"]
+atlas = ExtResource("3_hjjdp")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sebul"]
+atlas = ExtResource("3_hjjdp")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vetb4"]
+atlas = ExtResource("3_hjjdp")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yvgfb"]
+atlas = ExtResource("3_hjjdp")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dbfpd"]
+atlas = ExtResource("3_hjjdp")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5n31w"]
+atlas = ExtResource("3_hjjdp")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_crlvx"]
+atlas = ExtResource("3_hjjdp")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4p21u"]
+atlas = ExtResource("3_hjjdp")
+region = Rect2(256, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ek34f"]
+atlas = ExtResource("3_hjjdp")
+region = Rect2(288, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dehag"]
+atlas = ExtResource("3_hjjdp")
+region = Rect2(320, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ncy30"]
+atlas = ExtResource("3_hjjdp")
+region = Rect2(352, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uduc6"]
+atlas = ExtResource("3_hjjdp")
+region = Rect2(384, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vmxhe"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wrq3b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5wmaw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rwjc3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gijte")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p4h77")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g1f2w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bp2lt")
+}],
+"loop": true,
+"name": &"flicker",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kdd4a")
+}],
+"loop": false,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q18xj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yxkut")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sebul")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vetb4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yvgfb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dbfpd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5n31w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_crlvx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4p21u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ek34f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dehag")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ncy30")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uduc6")
+}],
+"loop": false,
+"name": &"shoot",
+"speed": 10.0
+}]
+
+[node name="Sniper" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_vmxhe")
+animation = &"idle"
