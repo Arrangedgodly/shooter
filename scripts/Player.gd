@@ -9,6 +9,7 @@ extends CharacterBody2D
 @onready var square_crosshair_scene = preload("res://scenes/square_crosshair.tscn")
 @onready var circle_crosshair_scene = preload("res://scenes/circle_crosshair.tscn")
 @onready var weapon_controller: WeaponController = $WeaponController
+@onready var sprite: PolygonSprite = $AnimatedSprite2D
 
 var square_crosshair: Crosshair
 var circle_crosshair: Crosshair
@@ -56,6 +57,13 @@ func _physics_process(delta: float) -> void:
 	
 	weapon_controller.set_aim_direction(aim_direction)
 	_update_crosshair()
+	
+	if velocity != Vector2.ZERO:
+		sprite.play("run")
+	else:
+		sprite.play("idle")
+
+	sprite.flip_h = aim_direction.x > 0
 
 func _handle_mouse_aim() -> void:
 	aim_direction = (get_global_mouse_position() - global_position).normalized()

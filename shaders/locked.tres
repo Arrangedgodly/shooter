@@ -1,0 +1,8 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://dt8l3u6nvvxyh"]
+
+[ext_resource type="Shader" path="res://shaders/locked.gdshader" id="1_vhrfk"]
+
+[resource]
+shader = ExtResource("1_vhrfk")
+shader_parameter/use_grayscale = true
+shader_parameter/shift_color = null

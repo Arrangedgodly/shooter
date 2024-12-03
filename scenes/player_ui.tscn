@@ -1,8 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://dskl7v4l4hoga"]
+[gd_scene load_steps=3 format=3 uid="uid://dskl7v4l4hoga"]
 
+[ext_resource type="Script" path="res://scripts/player_ui.gd" id="1_1q0u3"]
 [ext_resource type="PackedScene" uid="uid://bbnvej3en7gt1" path="res://scenes/weapon_panel.tscn" id="1_yn0p7"]
 
 [node name="PlayerUI" type="CanvasLayer"]
+script = ExtResource("1_1q0u3")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 anchors_preset = 12
@@ -11,7 +13,35 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 0
+alignment = 1
 
 [node name="WeaponPanel" parent="HBoxContainer" instance=ExtResource("1_yn0p7")]
 layout_mode = 2
-weapon_type = "knife"
+
+[node name="WeaponPanel2" parent="HBoxContainer" instance=ExtResource("1_yn0p7")]
+layout_mode = 2
+weapon_type = "axe"
+
+[node name="WeaponPanel3" parent="HBoxContainer" instance=ExtResource("1_yn0p7")]
+layout_mode = 2
+weapon_type = "pistol"
+
+[node name="WeaponPanel4" parent="HBoxContainer" instance=ExtResource("1_yn0p7")]
+layout_mode = 2
+weapon_type = "shotgun"
+
+[node name="WeaponPanel5" parent="HBoxContainer" instance=ExtResource("1_yn0p7")]
+layout_mode = 2
+weapon_type = "rifle"
+
+[node name="WeaponPanel6" parent="HBoxContainer" instance=ExtResource("1_yn0p7")]
+layout_mode = 2
+weapon_type = "sniper"
+
+[node name="WeaponPanel7" parent="HBoxContainer" instance=ExtResource("1_yn0p7")]
+layout_mode = 2
+weapon_type = "revolver"
+
+[node name="WeaponPanel8" parent="HBoxContainer" instance=ExtResource("1_yn0p7")]
+layout_mode = 2
+weapon_type = "rocket_launcher"
