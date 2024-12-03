@@ -1,8 +1,7 @@
-[gd_scene load_steps=42 format=3 uid="uid://cyurrqr3lwcrn"]
+[gd_scene load_steps=41 format=3 uid="uid://cyurrqr3lwcrn"]
 
 [ext_resource type="Texture2D" uid="uid://bjaj3bus4frvw" path="res://assets/Updated_ZombiePack_AssetPack/AnimationSheets/Player_Character_32x32/Player_Death .png" id="1_8sprc"]
 [ext_resource type="Script" path="res://scripts/Player.gd" id="1_13pyb"]
-[ext_resource type="Material" uid="uid://dbmqqxe1uw7tv" path="res://shaders/grayscale.tres" id="2_al1mp"]
 [ext_resource type="Texture2D" uid="uid://dc3iuchawekfg" path="res://assets/Updated_ZombiePack_AssetPack/AnimationSheets/Player_Character_32x32/Player_Hit .png" id="2_xjyci"]
 [ext_resource type="Texture2D" uid="uid://bgwsicchhxp2i" path="res://assets/Updated_ZombiePack_AssetPack/AnimationSheets/Player_Character_32x32/Player_idle.png" id="3_myo7k"]
 [ext_resource type="Texture2D" uid="uid://d2uww328p7juk" path="res://assets/Updated_ZombiePack_AssetPack/AnimationSheets/Player_Character_32x32/Player_knocked.png" id="4_cdjkb"]
@@ -259,7 +258,6 @@ animations = [{
 script = ExtResource("1_13pyb")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-material = ExtResource("2_al1mp")
 sprite_frames = SubResource("SpriteFrames_36efo")
 animation = &"run"
 autoplay = "idle"

@@ -1,7 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://bkhee1vpc45av"]
+[gd_scene load_steps=6 format=3 uid="uid://bkhee1vpc45av"]
 
 [ext_resource type="Texture2D" uid="uid://du4o4d2m5fqdl" path="res://assets/Updated_ZombiePack_AssetPack/TileSheets/Interior_Tileset_32x32.png" id="1_dvsec"]
-[ext_resource type="Material" uid="uid://dbmqqxe1uw7tv" path="res://shaders/grayscale.tres" id="1_jimyf"]
 [ext_resource type="Texture2D" uid="uid://dqptu70niug45" path="res://assets/Updated_ZombiePack_AssetPack/TileSheets/Wasteland_Tileset_32x32.png" id="2_ex57q"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kotvd"]
@@ -293,5 +292,4 @@ sources/0 = SubResource("TileSetAtlasSource_kotvd")
 sources/1 = SubResource("TileSetAtlasSource_8gw0h")
 
 [node name="MapLayer" type="TileMapLayer"]
-material = ExtResource("1_jimyf")
 tile_set = SubResource("TileSet_f5y21")
