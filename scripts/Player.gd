@@ -16,6 +16,7 @@ var circle_crosshair: Crosshair
 enum WeaponType { MELEE, RANGED }
 var active_weapon_type: WeaponType = WeaponType.MELEE
 var use_controller_aim: bool = false
+var attack_range: float = 50.0
 
 func _ready() -> void:
 	setup_crosshairs()
@@ -89,8 +90,7 @@ func setup_crosshairs() -> void:
 	update_crosshair_visibility()
 	
 func _update_crosshair() -> void:
-	var crosshair_distance: float = 50.0
-	var target_position = global_position + (aim_direction * crosshair_distance)
+	var target_position = global_position + (aim_direction * attack_range)
 	
 	if active_weapon_type == WeaponType.MELEE:
 		square_crosshair.global_position = target_position

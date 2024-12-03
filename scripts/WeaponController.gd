@@ -20,6 +20,10 @@ var weapon_scenes: Dictionary = {
 
 enum WeaponType { MELEE, RANGED }
 
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("click"):
+		weapon.attack()
+
 func _physics_process(delta: float) -> void:
 	if not weapon:
 		return

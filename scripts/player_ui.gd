@@ -8,6 +8,7 @@ func _ready() -> void:
 	active_weapon = "knife"
 	unlock_weapon("knife")
 	change_active_weapon(active_weapon)
+	Console.add_command("unlock", unlock_weapon, 1)
 
 func change_active_weapon(new_weapon: String) -> void:
 	for weapon in weapons.get_children():
@@ -20,3 +21,6 @@ func unlock_weapon(new_weapon: String) -> void:
 	for weapon in weapons.get_children():
 		if weapon.weapon_type == new_weapon:
 			weapon.unlock()
+
+func _exit_tree() -> void:
+	Console.remove_command("unlock")
