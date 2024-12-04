@@ -1,8 +1,9 @@
-[gd_scene load_steps=22 format=3 uid="uid://d3vs7tu1j53bi"]
+[gd_scene load_steps=23 format=3 uid="uid://d3vs7tu1j53bi"]
 
 [ext_resource type="Texture2D" uid="uid://cy2yj6dn4ecyn" path="res://assets/Updated_ZombiePack_AssetPack/AnimationSheets/Weaonns_Sprites_32x32/Revolver_Flicker.png" id="1_dju7c"]
 [ext_resource type="Texture2D" uid="uid://5msnbt80hais" path="res://assets/Updated_ZombiePack_AssetPack/SpriteSheets/Weapons sprites (32x32).png" id="1_ib6bt"]
 [ext_resource type="Texture2D" uid="uid://e4vv0mc2xfdi" path="res://assets/Updated_ZombiePack_AssetPack/AnimationSheets/Weaonns_Sprites_32x32/Revlover_Shoot.png" id="3_42weo"]
+[ext_resource type="Script" path="res://scripts/weapons/Revolver.gd" id="4_u5w36"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tvj7y"]
 atlas = ExtResource("1_dju7c")
@@ -143,4 +144,6 @@ animations = [{
 
 [node name="Revolver" type="AnimatedSprite2D"]
 sprite_frames = SubResource("SpriteFrames_dlm0a")
-animation = &"shoot"
+animation = &"idle"
+autoplay = "idle"
+script = ExtResource("4_u5w36")

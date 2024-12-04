@@ -1,9 +1,10 @@
 [gd_scene load_steps=3 format=3 uid="uid://bhk4283i5vjff"]
 
 [ext_resource type="SpriteFrames" uid="uid://dpw67in2krkm0" path="res://scenes/weapons/knife.tres" id="1_pjinu"]
-[ext_resource type="Script" path="res://scripts/Knife.gd" id="2_bo4fk"]
+[ext_resource type="Script" path="res://scripts/weapons/Knife.gd" id="2_bo4fk"]
 
 [node name="Knife" type="AnimatedSprite2D"]
 sprite_frames = ExtResource("1_pjinu")
-animation = &"flicker"
+animation = &"idle"
+autoplay = "idle"
 script = ExtResource("2_bo4fk")

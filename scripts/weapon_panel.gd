@@ -4,29 +4,26 @@ const NON_SELECTED = preload("res://assets/Updated_ZombiePack_AssetPack/UI/panel
 const SELECTED = preload("res://assets/Updated_ZombiePack_AssetPack/UI/panel 1 (32x32).png")
 
 @onready var locked_shader = preload("res://shaders/locked.tres").duplicate()
-var weapon
-
+var weapon_sprite: Node2D
+var weapon_name: String
 var is_unlocked: bool = false
 
-func _ready() -> void:
-	self.texture = NON_SELECTED
+func setup(name: String) -> void:
+	weapon_name = name
+	weapon_sprite = WeaponData.WEAPONS[name].scene.instantiate()
+	add_child(weapon_sprite)
 	
-func set_weapon(new_weapon: Weapon) -> void:
-	weapon = new_weapon
 	var rect_size = self.size
-	weapon.position = rect_size / 2
-	weapon.scale = Vector2(2, 2)
-	weapon.material = locked_shader
+	weapon_sprite.position = rect_size / 2
+	weapon_sprite.scale = Vector2(2, 2)
+	weapon_sprite.material = locked_shader
 
 func set_selection(new_selection: bool) -> void:
 	if !is_unlocked:
 		return
 		
-	if new_selection:
-		self.texture = SELECTED
-	else:
-		self.texture = NON_SELECTED
+	texture = SELECTED if new_selection else NON_SELECTED
 
 func unlock() -> void:
-	weapon.material = null
+	weapon_sprite.material = null
 	is_unlocked = true

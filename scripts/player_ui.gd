@@ -1,48 +1,62 @@
 extends CanvasLayer
 
 @export var player: CharacterBody2D
-var active_weapon: Weapon
 @onready var weapons: HBoxContainer = $HBoxContainer
-
-var weapon_scenes: Dictionary = {
-	"knife": preload("res://scenes/weapons/knife.tscn").instantiate(),
-	"axe": preload("res://scenes/weapons/axe.tscn").instantiate(),
-	"pistol": preload("res://scenes/weapons/pistol.tscn").instantiate(),
-	"revolver": preload("res://scenes/weapons/revolver.tscn").instantiate(),
-	"rifle": preload("res://scenes/weapons/rifle.tscn").instantiate(),
-	"rocket_launcher": preload("res://scenes/weapons/rocket_launcher.tscn").instantiate(),
-	"shotgun": preload("res://scenes/weapons/shotgun.tscn").instantiate(),
-	"sniper": preload("res://scenes/weapons/sniper.tscn").instantiate()
-}
-
 const WEAPON_PANEL = preload("res://scenes/weapon_panel.tscn")
 
+var unlocked_weapons: Dictionary = {}
+var current_weapon_index: int = 0
+var weapon_names: Array[String] = []
+
 func _ready() -> void:
-	print(weapon_scenes)
-	for weapon in weapon_scenes:
-		var weapon_panel = WEAPON_PANEL.instantiate()
-		var weapon_scene = weapon_scenes[weapon]
-		weapon_panel.set_weapon(weapon_scene)
-		weapons.add_child(weapon_panel)
-		
-		
-	active_weapon = weapon_scenes["knife"]
-	unlock_weapon(active_weapon)
-	change_active_weapon(active_weapon)
-	
+	setup_weapon_ui()
+	weapon_names.assign(WeaponData.WEAPONS.keys())
+	unlock_weapon("knife")
+	change_active_weapon("knife")
+	Console.pause_enabled = true
 	Console.add_command("unlock", unlock_weapon, 1)
 
-func change_active_weapon(new_weapon: Weapon) -> void:
-	for weapon in weapons.get_children():
-		if weapon == new_weapon:
-			weapon.set_selection(true)
-		else:
-			weapon.set_selection(false)
+func _unhandled_input(event: InputEvent) -> void:
+	if event is InputEventMouseButton and event.pressed:
+		match event.button_index:
+			MOUSE_BUTTON_WHEEL_UP:
+				cycle_weapon(1)
+			MOUSE_BUTTON_WHEEL_DOWN:
+				cycle_weapon(-1)
 
-func unlock_weapon(new_weapon: Weapon) -> void:
-	for weapon in weapons.get_children():
-		if weapon == new_weapon:
-			weapon.unlock()
+func cycle_weapon(direction: int) -> void:
+	var new_index = current_weapon_index
+	var attempts = 0
+	
+	while attempts < weapon_names.size():
+		new_index = (new_index + direction) % weapon_names.size()
+		if new_index < 0:
+			new_index = weapon_names.size() - 1
+			
+		if unlocked_weapons[weapon_names[new_index]]:
+			current_weapon_index = new_index
+			change_active_weapon(weapon_names[new_index])
+			break
+			
+		attempts += 1
 
-func _exit_tree() -> void:
-	Console.remove_command("unlock")
+func setup_weapon_ui() -> void:
+	for weapon_name in WeaponData.WEAPONS:
+		var weapon_panel = WEAPON_PANEL.instantiate()
+		weapons.add_child(weapon_panel)
+		weapon_panel.setup(weapon_name)
+		unlocked_weapons[weapon_name] = false
+
+func change_active_weapon(weapon_name: String) -> void:
+	if player:
+		player.switch_weapon(weapon_name)
+	
+	for panel in weapons.get_children():
+		panel.set_selection(panel.weapon_name == weapon_name)
+
+func unlock_weapon(weapon_name: String) -> void:
+	if weapon_name in unlocked_weapons:
+		unlocked_weapons[weapon_name] = true
+		for panel in weapons.get_children():
+			if panel.weapon_name == weapon_name:
+				panel.unlock()

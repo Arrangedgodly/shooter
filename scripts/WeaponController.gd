@@ -1,24 +1,14 @@
 extends Node2D
 class_name WeaponController
-signal weapon_type_changed(type: WeaponType)
+
+signal weapon_type_changed(type: WeaponData.WeaponType)
 
 @export var weapon_distance: float = 30.0
 @export var weapon_follow_speed: float = 10.0
 
-@onready var weapon: Weapon
+@onready var weapon: Node2D
+@onready var game = get_tree().get_first_node_in_group("game")  # Add group to Game node
 var target_rotation: float = 0.0
-var weapon_scenes: Dictionary = {
-	"knife": preload("res://scenes/weapons/knife.tscn"),
-	"axe": preload("res://scenes/weapons/axe.tscn"),
-	"pistol": preload("res://scenes/weapons/pistol.tscn"),
-	"revolver": preload("res://scenes/weapons/revolver.tscn"),
-	"rifle": preload("res://scenes/weapons/rifle.tscn"),
-	"rocket_launcher": preload("res://scenes/weapons/rocket_launcher.tscn"),
-	"shotgun": preload("res://scenes/weapons/shotgun.tscn"),
-	"sniper": preload("res://scenes/weapons/sniper.tscn")
-}
-
-enum WeaponType { MELEE, RANGED }
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("click"):
@@ -33,7 +23,16 @@ func _physics_process(delta: float) -> void:
 		var target_position = parent.global_position + Vector2.RIGHT.rotated(target_rotation) * weapon_distance
 		weapon.global_position = weapon.global_position.lerp(target_position, weapon_follow_speed * delta)
 		
-		weapon.rotation = target_rotation
+		# Only set the base rotation if the weapon isn't attacking
+		if weapon is Axe:
+			if not weapon.is_attacking:
+				weapon.rotation = target_rotation
+			else:
+				# During attack, add the attack offset to the base rotation
+				weapon.rotation = target_rotation + weapon.attack_offset
+		else:
+			weapon.rotation = target_rotation
+			
 		weapon.flip_v = abs(target_rotation) > PI/2
 
 func set_aim_direction(direction: Vector2) -> void:
@@ -41,19 +40,30 @@ func set_aim_direction(direction: Vector2) -> void:
 		target_rotation = direction.angle()
 
 func equip_weapon(weapon_name: String) -> void:
-	if not weapon_scenes.has(weapon_name):
+	if not WeaponData.WEAPONS.has(weapon_name):
 		return
 		
 	if weapon:
+		if game:
+			game.remove_camera_target(weapon)
 		weapon.queue_free()
 		
-	weapon = weapon_scenes[weapon_name].instantiate()
+	weapon = WeaponData.WEAPONS[weapon_name].scene.instantiate()
 	add_child(weapon)
 	
-	if weapon_name == "knife" or weapon_name == "axe":
-		weapon_type_changed.emit(WeaponType.MELEE)
-	else:
-		weapon_type_changed.emit(WeaponType.RANGED)
+	# Set camera target only for melee weapons
+	if game and WeaponData.WEAPONS[weapon_name].type == WeaponData.WeaponType.MELEE:
+		game.set_camera_target(weapon)
+		
+	weapon_type_changed.emit(WeaponData.WEAPONS[weapon_name].type)
 
-func get_current_weapon() -> Weapon:
-	return weapon
+# Handle projectile camera targeting
+func handle_projectile(projectile: Node2D) -> void:
+	var weapon_name = weapon.name.to_lower() if weapon else ""
+	if game and weapon and WeaponData.WEAPONS[weapon_name].type == WeaponData.WeaponType.RANGED:
+		game.set_camera_target(projectile)
+		# Wait until projectile is about to be freed
+		projectile.tree_exiting.connect(
+			func(): game.remove_camera_target(projectile),
+			CONNECT_ONE_SHOT
+		)

@@ -14,7 +14,7 @@ duration = 1.0
 transition = 0
 ease = 2
 
-[node name="Game" type="Node2D"]
+[node name="Game" type="Node2D" groups=["game"]]
 script = ExtResource("1_kcuxt")
 
 [node name="FirstLevel" parent="." instance=ExtResource("2_s006j")]
@@ -24,7 +24,8 @@ position = Vector2(-555, -321)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
-[node name="PlayerUI" parent="Camera2D" instance=ExtResource("3_ntmgq")]
+[node name="PlayerUI" parent="Camera2D" node_paths=PackedStringArray("player") instance=ExtResource("3_ntmgq")]
+player = NodePath("../../Player")
 
 [node name="PhantomCameraHost" type="Node" parent="Camera2D"]
 process_priority = 300

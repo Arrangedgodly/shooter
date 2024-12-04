@@ -1,8 +1,9 @@
-[gd_scene load_steps=26 format=3 uid="uid://gthqdd6onnoc"]
+[gd_scene load_steps=27 format=3 uid="uid://gthqdd6onnoc"]
 
 [ext_resource type="Texture2D" uid="uid://43nnhpxwk5jb" path="res://assets/Updated_ZombiePack_AssetPack/AnimationSheets/Weaonns_Sprites_32x32/Sniper_Flicker.png" id="1_0ofpf"]
 [ext_resource type="Texture2D" uid="uid://5msnbt80hais" path="res://assets/Updated_ZombiePack_AssetPack/SpriteSheets/Weapons sprites (32x32).png" id="1_qlbcq"]
 [ext_resource type="Texture2D" uid="uid://cllwc7o4wkedc" path="res://assets/Updated_ZombiePack_AssetPack/AnimationSheets/Weaonns_Sprites_32x32/Sniper_Shoot.png" id="3_hjjdp"]
+[ext_resource type="Script" path="res://scripts/weapons/Sniper.gd" id="4_e4vqr"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wrq3b"]
 atlas = ExtResource("1_0ofpf")
@@ -172,3 +173,5 @@ animations = [{
 [node name="Sniper" type="AnimatedSprite2D"]
 sprite_frames = SubResource("SpriteFrames_vmxhe")
 animation = &"idle"
+autoplay = "idle"
+script = ExtResource("4_e4vqr")

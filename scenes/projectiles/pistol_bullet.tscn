@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://b5u53inm300i6"]
+
+[ext_resource type="Script" path="res://scripts/projectiles/PistolBullet.gd" id="1_rigxv"]
+[ext_resource type="Texture2D" uid="uid://dbkfhql47dulu" path="res://assets/Updated_ZombiePack_AssetPack/SpriteSheets/items & bullets sprites(16x16).png" id="2_njrqr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sxxfk"]
+size = Vector2(9, 6)
+
+[node name="PistolBullet" type="Area2D"]
+script = ExtResource("1_rigxv")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_njrqr")
+hframes = 5
+vframes = 7
+frame = 27
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 0)
+shape = SubResource("RectangleShape2D_sxxfk")

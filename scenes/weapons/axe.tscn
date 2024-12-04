@@ -1,7 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://c2hhcnnog26mv"]
+[gd_scene load_steps=13 format=3 uid="uid://c2hhcnnog26mv"]
 
 [ext_resource type="Texture2D" uid="uid://bqs308bwp1ayw" path="res://assets/Updated_ZombiePack_AssetPack/AnimationSheets/Weaonns_Sprites_32x32/Axe_Flicker.png" id="1_r4hvo"]
 [ext_resource type="Texture2D" uid="uid://5msnbt80hais" path="res://assets/Updated_ZombiePack_AssetPack/SpriteSheets/Weapons sprites (32x32).png" id="1_rky5m"]
+[ext_resource type="Script" path="res://scripts/weapons/Axe.gd" id="3_6rqs6"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_i1mni"]
 atlas = ExtResource("1_r4hvo")
@@ -74,4 +75,6 @@ animations = [{
 
 [node name="Axe" type="AnimatedSprite2D"]
 sprite_frames = SubResource("SpriteFrames_bmv0b")
-animation = &"flicker"
+animation = &"idle"
+autoplay = "idle"
+script = ExtResource("3_6rqs6")

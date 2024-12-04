@@ -17,6 +17,22 @@ enum WeaponType { MELEE, RANGED }
 var active_weapon_type: WeaponType = WeaponType.MELEE
 var use_controller_aim: bool = false
 var attack_range: float = 50.0
+var ammo_storage: Dictionary = {
+	"pistol": 36,    # 3 clips
+	"shotgun": 24,   # 4 clips
+	"revolver": 24,  # 4 clips
+	"sniper": 12,    # 3 clips
+	"rifle": 120,    # 4 clips
+	"rocket": 3      # 3 rockets
+}
+var max_ammo_storage: Dictionary = {
+	"pistol": 60,    # 5 clips
+	"shotgun": 36,   # 6 clips
+	"revolver": 36,  # 6 clips
+	"sniper": 20,    # 5 clips
+	"rifle": 180,    # 6 clips
+	"rocket": 5      # 5 rockets
+}
 
 func _ready() -> void:
 	setup_crosshairs()
@@ -98,7 +114,7 @@ func _update_crosshair() -> void:
 		circle_crosshair.global_position = target_position
 
 func update_crosshair_visibility() -> void:
-	if square_crosshair and circle_crosshair:  # Check if instances exist
+	if square_crosshair and circle_crosshair:
 		square_crosshair.visible = (active_weapon_type == WeaponType.MELEE)
 		circle_crosshair.visible = (active_weapon_type == WeaponType.RANGED)
 
@@ -108,3 +124,25 @@ func switch_weapon(new_weapon: String) -> void:
 
 func update_weapon_type(new_type: WeaponType) -> void:
 	active_weapon_type = new_type
+	update_crosshair_visibility()
+
+func reload_current_weapon() -> void:
+	var weapon = weapon_controller.weapon
+	if not weapon is RangedWeapon:
+		return
+		
+	var weapon_type = weapon.name.to_lower()
+	if weapon.current_ammo < weapon.clip_size and ammo_storage[weapon_type] > 0:
+		var ammo_needed = weapon.clip_size - weapon.current_ammo
+		var ammo_available = min(ammo_needed, ammo_storage[weapon_type])
+		
+		weapon.current_ammo += ammo_available
+		ammo_storage[weapon_type] -= ammo_available
+		weapon.reload()
+
+func add_ammo(weapon_type: String, amount: int) -> void:
+	if weapon_type in ammo_storage:
+		ammo_storage[weapon_type] = min(
+			ammo_storage[weapon_type] + amount,
+			max_ammo_storage[weapon_type]
+		)

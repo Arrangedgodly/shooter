@@ -1,8 +1,9 @@
-[gd_scene load_steps=23 format=3 uid="uid://buhvcnk7nj75j"]
+[gd_scene load_steps=24 format=3 uid="uid://buhvcnk7nj75j"]
 
 [ext_resource type="Texture2D" uid="uid://b5jhjcgoj3epg" path="res://assets/Updated_ZombiePack_AssetPack/AnimationSheets/Weaonns_Sprites_32x32/Pump_Flicker.png" id="1_5w3ty"]
 [ext_resource type="Texture2D" uid="uid://5msnbt80hais" path="res://assets/Updated_ZombiePack_AssetPack/SpriteSheets/Weapons sprites (32x32).png" id="1_ags4q"]
 [ext_resource type="Texture2D" uid="uid://vj6827nnxnen" path="res://assets/Updated_ZombiePack_AssetPack/AnimationSheets/Weaonns_Sprites_32x32/Pump_Shoot.png" id="3_rhc3a"]
+[ext_resource type="Script" path="res://scripts/weapons/Shotgun.gd" id="4_0p6vh"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ueevi"]
 atlas = ExtResource("1_5w3ty")
@@ -150,6 +151,6 @@ animations = [{
 
 [node name="Shotgun" type="AnimatedSprite2D"]
 sprite_frames = SubResource("SpriteFrames_phtoe")
-animation = &"shoot"
-frame = 9
-frame_progress = 1.0
+animation = &"idle"
+autoplay = "idle"
+script = ExtResource("4_0p6vh")
