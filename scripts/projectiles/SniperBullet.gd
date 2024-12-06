@@ -5,5 +5,5 @@ var penetration_count: int = 3
 	
 func _ready() -> void:
 	super._ready()
-	speed = 2000.0
+	speed = 5000.0
 	lifetime = 3.0

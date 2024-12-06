@@ -12,7 +12,11 @@ func _ready() -> void:
 		phantom_camera_2d.follow_mode = 3
 		phantom_camera_2d.set_follow_target(player)
 		phantom_camera_2d.set_follow_damping(true)
-		phantom_camera_2d.set_follow_damping_value(Vector2(0.15, 0.15))
+		phantom_camera_2d.set_follow_damping_value(Vector2(0.25, 0.25))
+		phantom_camera_2d.set_auto_zoom(true)
+		phantom_camera_2d.set_auto_zoom_min(.3)
+		phantom_camera_2d.set_auto_zoom_max(1)
+		phantom_camera_2d.set_auto_zoom_margin(Vector4(20, 20, 20, 20))
 		if player.weapon_controller.weapon:
 			phantom_camera_2d.append_follow_targets(player.weapon_controller.weapon)
 

@@ -71,7 +71,9 @@ func handle_projectile(projectile: Node2D) -> void:
 		weapon_name = "rocket_launcher"
 	if game and weapon and WeaponData.WEAPONS[weapon_name].type == WeaponData.WeaponType.RANGED:
 		game.set_camera_target(projectile)
+		game.remove_camera_target(weapon)
 		
 		await get_tree().create_timer(.5).timeout
 		
 		game.remove_camera_target(projectile)
+		game.set_camera_target(weapon)
