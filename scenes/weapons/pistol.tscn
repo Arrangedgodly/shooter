@@ -111,11 +111,19 @@ animations = [{
 }],
 "loop": false,
 "name": &"shoot",
-"speed": 10.0
+"speed": 20.0
 }]
 
-[node name="Pistol" type="AnimatedSprite2D"]
+[node name="Pistol" type="AnimatedSprite2D" node_paths=PackedStringArray("fire_rate_timer", "reload_timer")]
 sprite_frames = SubResource("SpriteFrames_rmj2c")
-animation = &"idle"
+animation = &"shoot"
 autoplay = "idle"
+frame = 4
+frame_progress = 1.0
 script = ExtResource("4_njp4g")
+fire_rate_timer = NodePath("FireRateTimer")
+reload_timer = NodePath("ReloadTimer")
+
+[node name="FireRateTimer" type="Timer" parent="."]
+
+[node name="ReloadTimer" type="Timer" parent="."]

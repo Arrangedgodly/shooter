@@ -139,11 +139,17 @@ animations = [{
 }],
 "loop": false,
 "name": &"shoot",
-"speed": 10.0
+"speed": 20.0
 }]
 
-[node name="Revolver" type="AnimatedSprite2D"]
+[node name="Revolver" type="AnimatedSprite2D" node_paths=PackedStringArray("fire_rate_timer", "reload_timer")]
 sprite_frames = SubResource("SpriteFrames_dlm0a")
 animation = &"idle"
 autoplay = "idle"
 script = ExtResource("4_u5w36")
+fire_rate_timer = NodePath("FireRateTimer")
+reload_timer = NodePath("ReloadTimer")
+
+[node name="FireRateTimer" type="Timer" parent="."]
+
+[node name="ReloadTimer" type="Timer" parent="."]

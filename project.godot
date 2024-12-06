@@ -32,6 +32,8 @@ enabled=PackedStringArray("res://addons/Todo_Manager/plugin.cfg", "res://addons/
 [global_group]
 
 game=""
+fire-rate=""
+reload-rate=""
 
 [input]
 

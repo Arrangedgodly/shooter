@@ -10,9 +10,12 @@ var pivot_point: Vector2
 var swing_start_offset: float = -PI/2  # Start swing from behind
 var swing_end_offset: float = PI/3    # End swing in front
 var initial_aim_rotation: float       # Store the aim direction when attack starts
+var attack_rate = 1.50
+@onready var attack_rate_timer: Timer = $AttackRateTimer
 
 func _ready() -> void:
 	super._ready()
+	attack_rate_timer.wait_time = attack_rate
 
 func _physics_process(delta: float) -> void:
 	if is_attacking:
@@ -41,7 +44,7 @@ func _physics_process(delta: float) -> void:
 		rotation = initial_aim_rotation + current_angle + PI/4
 
 func attack() -> void:
-	if is_attacking:
+	if is_attacking or !attack_rate_timer.is_stopped():
 		return
 		
 	is_attacking = true
@@ -49,3 +52,6 @@ func attack() -> void:
 	initial_aim_rotation = rotation - PI/4  # Subtract PI/4 to account for blade angle
 	pivot_point = position
 	attack_offset = 0.0
+	attack_rate_timer.start()
+	var fire_rate_scene = get_tree().get_first_node_in_group("fire-rate")
+	fire_rate_scene.init(attack_rate)

@@ -78,3 +78,6 @@ sprite_frames = SubResource("SpriteFrames_bmv0b")
 animation = &"idle"
 autoplay = "idle"
 script = ExtResource("3_6rqs6")
+
+[node name="AttackRateTimer" type="Timer" parent="."]
+one_shot = true

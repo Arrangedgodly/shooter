@@ -11,8 +11,8 @@ func _ready() -> void:
 	if phantom_camera_2d:
 		phantom_camera_2d.follow_mode = 3
 		phantom_camera_2d.set_follow_target(player)
-		phantom_camera_2d.show_viewfinder_in_play = true
 		phantom_camera_2d.set_follow_damping(true)
+		phantom_camera_2d.set_follow_damping_value(Vector2(0.15, 0.15))
 		if player.weapon_controller.weapon:
 			phantom_camera_2d.append_follow_targets(player.weapon_controller.weapon)
 
@@ -23,3 +23,6 @@ func set_camera_target(target: Node2D) -> void:
 func remove_camera_target(target: Node2D) -> void:
 	if phantom_camera_2d and is_instance_valid(target):
 		phantom_camera_2d.erase_follow_targets(target)
+		phantom_camera_2d.erase_follow_targets(player)
+	
+	set_camera_target(player)

@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://dv222364hbbfk"]
+
+[ext_resource type="Script" path="res://scripts/projectiles/SniperBullet.gd" id="1_0vuft"]
+[ext_resource type="Texture2D" uid="uid://dbkfhql47dulu" path="res://assets/Updated_ZombiePack_AssetPack/SpriteSheets/items & bullets sprites(16x16).png" id="2_ivb36"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d4w4r"]
+size = Vector2(13, 8)
+
+[node name="SniperBullet" type="Area2D"]
+script = ExtResource("1_0vuft")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_ivb36")
+hframes = 5
+vframes = 7
+frame = 29
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_d4w4r")

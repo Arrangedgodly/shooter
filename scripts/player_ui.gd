@@ -12,6 +12,13 @@ func _ready() -> void:
 	setup_weapon_ui()
 	weapon_names.assign(WeaponData.WEAPONS.keys())
 	unlock_weapon("knife")
+	unlock_weapon("axe")
+	unlock_weapon("pistol")
+	unlock_weapon("revolver")
+	unlock_weapon("rifle")
+	unlock_weapon("shotgun")
+	unlock_weapon("sniper")
+	unlock_weapon("rocket_launcher")
 	change_active_weapon("knife")
 	Console.pause_enabled = true
 	Console.add_command("unlock", unlock_weapon, 1)
@@ -20,9 +27,9 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.pressed:
 		match event.button_index:
 			MOUSE_BUTTON_WHEEL_UP:
-				cycle_weapon(1)
-			MOUSE_BUTTON_WHEEL_DOWN:
 				cycle_weapon(-1)
+			MOUSE_BUTTON_WHEEL_DOWN:
+				cycle_weapon(1)
 
 func cycle_weapon(direction: int) -> void:
 	var new_index = current_weapon_index

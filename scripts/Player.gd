@@ -132,6 +132,8 @@ func reload_current_weapon() -> void:
 		return
 		
 	var weapon_type = weapon.name.to_lower()
+	if weapon_type == "rocketlauncher":
+		weapon_type = "rocket_launcher"
 	if weapon.current_ammo < weapon.clip_size and ammo_storage[weapon_type] > 0:
 		var ammo_needed = weapon.clip_size - weapon.current_ammo
 		var ammo_available = min(ammo_needed, ammo_storage[weapon_type])

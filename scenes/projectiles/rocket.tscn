@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://5yme2o3j3vmm"]
+
+[ext_resource type="Script" path="res://scripts/projectiles/Rocket.gd" id="1_032cs"]
+[ext_resource type="Texture2D" uid="uid://dbkfhql47dulu" path="res://assets/Updated_ZombiePack_AssetPack/SpriteSheets/items & bullets sprites(16x16).png" id="2_x582r"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hkxxf"]
+size = Vector2(9, 8)
+
+[node name="Rocket" type="Area2D"]
+script = ExtResource("1_032cs")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_x582r")
+hframes = 5
+vframes = 7
+frame = 25
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_hkxxf")

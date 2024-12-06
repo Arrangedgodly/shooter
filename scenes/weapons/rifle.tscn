@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://dh35i3unb7fku"]
+[gd_scene load_steps=19 format=3 uid="uid://dh35i3unb7fku"]
 
 [ext_resource type="Texture2D" uid="uid://b035urhhr3rbv" path="res://assets/Updated_ZombiePack_AssetPack/AnimationSheets/Weaonns_Sprites_32x32/Rifle_Flicker.png" id="1_reev4"]
 [ext_resource type="Texture2D" uid="uid://5msnbt80hais" path="res://assets/Updated_ZombiePack_AssetPack/SpriteSheets/Weapons sprites (32x32).png" id="2_4hnlm"]
@@ -53,6 +53,10 @@ region = Rect2(64, 0, 32, 32)
 atlas = ExtResource("3_jxsyv")
 region = Rect2(96, 0, 32, 32)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_0ivtn"]
+atlas = ExtResource("1_reev4")
+region = Rect2(192, 0, 32, 32)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_l8rd5"]
 animations = [{
 "frames": [{
@@ -101,14 +105,25 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_818ah")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0ivtn")
 }],
 "loop": false,
 "name": &"shoot",
-"speed": 10.0
+"speed": 20.0
 }]
 
-[node name="Rifle" type="AnimatedSprite2D"]
+[node name="Rifle" type="AnimatedSprite2D" node_paths=PackedStringArray("fire_rate_timer", "reload_timer")]
 sprite_frames = SubResource("SpriteFrames_l8rd5")
-animation = &"idle"
+animation = &"shoot"
 autoplay = "idle"
+frame = 4
+frame_progress = 1.0
 script = ExtResource("4_vnj7v")
+fire_rate_timer = NodePath("FireRateTimer")
+reload_timer = NodePath("ReloadTimer")
+
+[node name="FireRateTimer" type="Timer" parent="."]
+
+[node name="ReloadTimer" type="Timer" parent="."]

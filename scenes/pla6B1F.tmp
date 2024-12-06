@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://cyurrqr3lwcrn"]
+[gd_scene load_steps=42 format=3 uid="uid://cyurrqr3lwcrn"]
 
 [ext_resource type="Texture2D" uid="uid://bjaj3bus4frvw" path="res://assets/Updated_ZombiePack_AssetPack/AnimationSheets/Player_Character_32x32/Player_Death .png" id="1_8sprc"]
 [ext_resource type="Script" path="res://scripts/Player.gd" id="1_13pyb"]
@@ -9,7 +9,6 @@
 [ext_resource type="Script" path="res://scripts/PolygonSprite.gd" id="6_dtfb3"]
 [ext_resource type="Script" path="res://scripts/WeaponController.gd" id="8_fpu7r"]
 [ext_resource type="PackedScene" uid="uid://blwkl8vcbwu6w" path="res://scenes/fire_rate.tscn" id="9_nhq6t"]
-[ext_resource type="PackedScene" uid="uid://e50flm14nkb5" path="res://scenes/reload_rate.tscn" id="10_0kat2"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2s1dx"]
 atlas = ExtResource("1_8sprc")
@@ -270,9 +269,5 @@ script = ExtResource("6_dtfb3")
 script = ExtResource("8_fpu7r")
 
 [node name="FireRate" parent="." instance=ExtResource("9_nhq6t")]
-position = Vector2(0, -20)
-scale = Vector2(0.25, 0.25)
-
-[node name="ReloadRate" parent="." instance=ExtResource("10_0kat2")]
 position = Vector2(0, -20)
 scale = Vector2(0.25, 0.25)

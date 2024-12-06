@@ -7,16 +7,23 @@ signal weapon_type_changed(type: WeaponData.WeaponType)
 @export var weapon_follow_speed: float = 10.0
 
 @onready var weapon: Node2D
-@onready var game = get_tree().get_first_node_in_group("game")  # Add group to Game node
+@onready var game = get_tree().get_first_node_in_group("game")
+
 var target_rotation: float = 0.0
+var is_attacking: bool = false
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("click"):
-		weapon.attack()
+		is_attacking = true
+	if event.is_action_released("click"):
+		is_attacking = false
 
 func _physics_process(delta: float) -> void:
 	if not weapon:
 		return
+	
+	if is_attacking:
+		weapon.attack()
 
 	var parent = get_parent() as Node2D
 	if parent:
@@ -60,10 +67,11 @@ func equip_weapon(weapon_name: String) -> void:
 # Handle projectile camera targeting
 func handle_projectile(projectile: Node2D) -> void:
 	var weapon_name = weapon.name.to_lower() if weapon else ""
+	if weapon_name == "rocketlauncher":
+		weapon_name = "rocket_launcher"
 	if game and weapon and WeaponData.WEAPONS[weapon_name].type == WeaponData.WeaponType.RANGED:
 		game.set_camera_target(projectile)
-		# Wait until projectile is about to be freed
-		projectile.tree_exiting.connect(
-			func(): game.remove_camera_target(projectile),
-			CONNECT_ONE_SHOT
-		)
+		
+		await get_tree().create_timer(.5).timeout
+		
+		game.remove_camera_target(projectile)
